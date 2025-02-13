@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mambo Studio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Header y Navegación */
+        header {
+            background-color: #ec5656; /* Rojo principal */
+            color: white;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffcccc; /* Rojo más claro para hover */
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0), rgba(248, 248, 248, 0.7)), url('carousel-1.jpg') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: BLACK;
+            text-align: center;
+            padding-top: 60px;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            padding: 1rem 2rem;
+            background-color: white;
+            color: #ff0000;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .cta-button:hover {
+            background-color: #ff0000;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Sección Clases */
+        .clases {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+        }
+
+        .clases h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #ff0000;
+        }
+
+        .clases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .clase-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            border: 2px solid #ff0000;
+        }
+
+        .clase-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .clase-card h3 {
+            color: #ff0000;
+            margin: 1rem 0;
+        }
+
+        .clase-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+
+        /* Sección Horarios */
+        .horarios {
+            background-color: #ffebeb; /* Fondo rojo muy claro */
+            padding: 4rem 2rem;
+        }
+
+        .horarios-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .horarios h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #ff0000;
+        }
+
+        .horario-tabla {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+            background-color: white;
+        }
+
+        .horario-tabla th, .horario-tabla td {
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid #ffcccc;
+        }
+
+        .horario-tabla th {
+            background-color: #ff0000;
+            color: white;
+        }
+
+        /* Sección Contacto */
+        .contacto {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+        }
+
+        .contacto h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #ff0000;
+        }
+
+        .contacto-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .contacto-card {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            border: 2px solid #ff0000;
+        }
+
+        .contacto-card h3 {
+            color: #ff0000;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #ec5665;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .social-links {
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #ffcccc;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .horario-tabla {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- El resto del HTML permanece igual -->
+    <header>
+        <nav>
+            <div class="logo"></div>
+            <div class="nav-links">
+                <a href="#inicio">Inicio</a>
+                <a href="#clases">Clases</a>
+                <a href="#horarios">Horarios</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <img src="mambo studio.png">
+            <p>PASION EN CADA PASO, RITMO EN CADA CORAZON</p>
+            <a href="https://w.app/mambostudio" class="cta-button" target="_blank">¡Comienza a bailar!</a>
+        </div>
+    </section>
+
+    <section class="clases" id="clases">
+        <h2>Nuestras Clases</h2>
+        <div class="clases-grid">
+            <div class="clase-card">
+                <img src="bachata.jpg" alt="Salsa">
+                <h3>SALSA</h3>
+                <p>Sumérgete en el ritmo vibrante de la salsa y aprende a moverte con confianza en la pista de baile. Nuestras clases están diseñadas para todos los niveles, desde principiantes hasta avanzados, con un enfoque dinámico y divertido. Mejora tu técnica, coordinación y estilo mientras disfrutas de una experiencia llena de energía y pasión.</p>
+            </div>
+            <div class="clase-card">
+                <img src="salsa.jpg" alt="Bachata">
+                <h3>BACHATA</h3>
+                <p>Descubre la sensualidad y el romanticismo de la bachata en nuestras clases especializadas. Aprende a conectar con tu pareja de baile, perfecciona tus movimientos y domina los giros con elegancia. Tanto si quieres empezar desde cero como si buscas pulir tu estilo, nuestras sesiones te ayudarán a expresarte con fluidez en cada paso.</p>
+            </div>
+            <div class="clase-card">
+                <img src="niños.jpg" alt="Formacion Niños">
+                <h3>FORMACION NIÑOS</h3>
+                <p>Fomentamos el amor por el baile desde una edad temprana con nuestro programa especial para niños. A través de juegos, música y coreografías, los más pequeños desarrollan coordinación, disciplina y confianza en sí mismos. Nuestro ambiente seguro y motivador les permite aprender mientras se divierten, promoviendo una vida activa y saludable.
+
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="horarios" id="horarios">
+        <div class="horarios-content">
+            <h2>Horarios de Clases</h2>
+              <img src="horarios.png" style="display:block;margin:auto;">
+
+            
+                <!-- AGREGAR_MAS_HORARIOS -->
+            </table>
+        </div>
+    </section>
+
+    <section class="contacto" id="contacto">
+        <h2>Contacto</h2>
+        <div class="contacto-info">
+            <div class="contacto-card">
+                <h3>Dirección</h3>
+                <p><a href="https://maps.app.goo.gl/9fHUz5nfm8jfom417" target="_blank">Calle 94 Sur #14a-76</a></p>
+            </div>
+            <div class="contacto-card">
+                <h3>Teléfono</h3>
+                <p><a href="https://w.app/mambostudio" target="_blank">320-454-1266</a></p>
+            </div>
+            <div class="contacto-card">
+                <h3>Email</h3>
+                <p><a href="mailto:mambostudio35@gmail.com" target="_blank" rel="noopener noreferrer">mambostudio35@gmail.com</a></p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 MAMBO STUDIO - TODOS LOS DERECHOS RESERVADOS</p>
+        <div class="social-links">
+            <a href="https://www.facebook.com/share/19xKujm5AG/?mibextid=wwXIfr"target="_blank">Facebook</a>
+            <a href="https://www.instagram.com/msmambostudio?igsh=azd6OXgzbHBlbmUz&utm_source=qr"target="_blank">Instagram</a>
+            <a href="https://w.app/mambostudio"target="_blank">WhatsApp</a>
+        </div>
+    </footer>
+</body>
+</html>
